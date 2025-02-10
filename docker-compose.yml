@@ -1,0 +1,27 @@
+services:
+
+  server:
+    build:
+      context: ./
+      target: runnerserver
+    develop:
+      watch:
+        - path: ./server/
+          action: rebuild
+        - path: ./Dockerfile
+          action: rebuild
+    ports:
+      - 8081:8080
+
+  client:
+    build:
+      context: ./
+      target: runnerclient
+    develop:
+      watch:
+        - path: ./client/
+          action: rebuild
+        - path: ./Dockerfile
+          action: rebuild
+    ports:
+      - 8082:8080
